@@ -1,0 +1,1 @@
+# Tradutor-Artigos-Tecnicos-AzureAI
