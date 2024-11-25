@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tradutor Inteligente</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .text-container {
+            width: 45%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        textarea, select, input[type="file"] {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tradutor Inteligente</h1>
+    
+    <div class="form-container">
+        <form method="POST" enctype="multipart/form-data">
+            <label for="text">Digite o texto ou faça o upload de um arquivo:</label><br>
+            <textarea id="text" name="text" rows="4" cols="50" placeholder="Digite o texto aqui..."></textarea><br><br>
+            
+            <label for="file">Ou faça o upload de um arquivo (PDF ou DOCX):</label><br>
+            <input type="file" id="file" name="file"><br><br>
+            
+            <label for="language">Escolha o idioma de destino:</label><br>
+            <select id="language" name="language">
+                <option value="pt-br">Português</option>
+                <option value="en">Inglês</option>
+                <option value="es">Espanhol</option>
+                <option value="fr">Francês</option>
+            </select><br><br>
+            
+            <button type="submit">Traduzir</button>
+        </form>
+    </div>
+    
+    {% if detected_language %}
+    <h3>Idioma Detectado: {{ detected_language }}</h3>
+    <h4>Confiança: {{ confidence * 100 }}%</h4>
+
+    <div class="container">
+        <div class="text-container">
+            <h3>Texto Original:</h3>
+            <p>{{ original_text }}</p>
+        </div>
+
+        <div class="text-container">
+            <h3>Texto Traduzido para {{ target_language }}:</h3>
+            <p>{{ translated_text }}</p>
+        </div>
+    </div>
+    {% endif %}
+</body>
+</html>
