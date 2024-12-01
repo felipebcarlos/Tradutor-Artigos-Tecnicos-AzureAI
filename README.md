@@ -68,6 +68,5 @@ Nesta demonstração será possível realizar a tradução de textos ou arquivos
 ├── README.MD
 ├── templates
    └── index.html
-├── README.MD
 ```
 
